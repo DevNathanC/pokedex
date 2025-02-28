@@ -18,8 +18,8 @@ const PokemonList = () => {
         setPokemons((prevPokemons) => [...prevPokemons, ...pokemonsData]);
     };
 
-    useEffect(() => {
-        loadPokemons(offset);
+    useEffect(() => {    
+      loadPokemons(offset);
     }, []);
 
     const handleLoadMore = () => {
@@ -40,7 +40,7 @@ const PokemonList = () => {
                         <Li key={index} className="pokemonList" style={{ backgroundColor: theme.background }} >
                             <Link to={`/pokemon/${pokemon.id}`} >
                                 <Img src={pokemon.sprites.other['dream_world'].front_default} alt={pokemon.name} />
-                                <h2 style={{ color: theme.color }}>{pokemon.name}</h2>
+                                <H2 style={{ color: theme.color }}>{pokemon.name}</H2>
                             </Link>
                         </Li>
                     ))}
@@ -88,6 +88,10 @@ const Li = styled.li`
 const Img = styled.img`
     width: 90%;
     height: 90%;
+`
+
+const H2 = styled.h2`
+    font-weight: bolder;
 `
 
 

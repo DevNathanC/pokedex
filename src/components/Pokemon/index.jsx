@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { baseUrl } from "../../services/FetchApi";
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components'
 import { ThemeTogglerButton } from "../theme-toggler-button/theme-toggler-button";
+import { ThemeContext } from "../../components/contexts/theme-context";
 
 
 
@@ -13,6 +14,7 @@ async function getPokemon(id) {
 
 const PokemonDetails = () => {
 
+    const { theme } = useContext(ThemeContext);
     const { id } = useParams()
 
     const [Pokemon, setPokemon] = useState({
@@ -48,7 +50,7 @@ const PokemonDetails = () => {
 
     return (
         <>
-            <Div>
+            <Div style={{ backgroundColor: theme.backgroundTheme }}>
                 <DivTheme>
                 <ThemeTogglerButton/>
                 </DivTheme>
