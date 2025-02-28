@@ -60,7 +60,7 @@ const PokemonDetails = () => {
                 <ul>
                     <Li>
                         <Img src={Pokemon.image} alt={Pokemon.name} />
-                        <div>
+                        <DivInfos>
                             <DivName>
                                 <H2><B>Name:</B> {Pokemon.name.toUpperCase()}</H2>
                                 <P><B>Type:</B> {Pokemon.type.join(',').toUpperCase()}</P>
@@ -73,7 +73,7 @@ const PokemonDetails = () => {
                             <Ul>
                                 {Pokemon.moves.map((move, index) => ( <li key={index}>{move}</li> ))}
                             </Ul>
-                        </div>
+                        </DivInfos>
 
                     </Li>
 
@@ -83,19 +83,24 @@ const PokemonDetails = () => {
     );
 };
 
-const Div = styled.div`
-    height: 100%;
-    padding:30px;
+const Div = styled.div`    
+    height: 100dvh;
+    padding: 10px;
     background-color: #142433 ;
     font-family: Poppins, sans-serif;
-    text-align: center;        
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const DivTheme = styled.div`    
   text-align: start;
+  width:90%;
 `
 
 const H1 = styled.h1`
+    width:90%;
     font-size: 40px;
     font-weight: bolder;
     color: #bd2f28;
@@ -106,9 +111,10 @@ const Ul = styled.ul`
     display: flex;
     list-style: disc;
     flex-wrap: wrap;
-    gap: 20px;
-    font-size: 10px;
+    gap: 30px;
+    font-size: 15px;
     justify-content: center;
+    width:90%; 
 `
 
 const Li = styled.li`
@@ -117,6 +123,13 @@ const Li = styled.li`
 
 const Img = styled.img`
     width: 150px ;
+`
+
+const DivInfos = styled.div`
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
 `
 
 const DivName = styled.div`
