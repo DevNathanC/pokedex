@@ -34,6 +34,12 @@ padding: 5px ;
     &:hover{
     box-shadow: inset 400px 0 0 0 #5a0f94 ;
     };
+
+    @media only screen and (min-width: 2560px){
+       width: 250px ;
+       height: 100px;
+       font-size: 40px
+    }
     
 `
 

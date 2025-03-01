@@ -97,7 +97,7 @@ const PokemonDetails = () => {
 };
 
 const Div = styled.div`    
-    height: 100%;
+    height: 100dvh;
     padding: 10px;
     background-color: #142433 ;
     font-family: Poppins, sans-serif;
@@ -105,6 +105,10 @@ const Div = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media only screen and (max-width: 768px){
+    height: 100%;
+    }
 `
 
 const DivTheme = styled.div`    
@@ -118,6 +122,10 @@ const H1 = styled.h1`
     font-weight: bolder;
     color: #bd2f28;
     margin-bottom: 20px;
+
+    @media only screen and (min-width: 2560px){
+       font-size: 100px
+    }
 `
 
 const Ul = styled.ul`
@@ -128,6 +136,11 @@ const Ul = styled.ul`
     font-size: 15px;
     justify-content: center;
     width:90%; 
+
+    @media only screen and (min-width: 2560px){
+        font-size: 40px;
+        gap: 50px;
+    }
 `
 const UlAbilities = styled(Ul)`
     list-style: none;
@@ -139,12 +152,21 @@ const Li = styled.li`
 
 const Img = styled.img`
     width: 150px ;
+
+    @media only screen and (min-width: 2560px){
+       width: 450px ;
+    }
 `
 
 const DivInfos = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
+
+    @media only screen and (min-width: 2560px){
+        font-size: 60px;
+        margin: 100px;
+    }
 
 `
 
@@ -166,6 +188,10 @@ const P = styled.p`
 const B = styled.b`
     font-weight: bolder;
     color: #bd2f28;
+
+    @media only screen and (min-width: 2560px){
+        font-size: 70px;
+    }
 `
 
 export default PokemonDetails;

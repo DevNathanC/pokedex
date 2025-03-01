@@ -52,11 +52,15 @@ const PokemonList = () => {
 };
 
 const Div = styled.div`
-    height: 100%;
+    height: 100dvh;
     padding:30px;
     font-family: Poppins, sans-serif;
     text-align: center;  
     text-decoration: none;
+
+    @media only screen and (max-width: 1440px){
+    height: 100%;
+    }
 `
 
 const DivTheme = styled.div`
@@ -68,6 +72,10 @@ const H1 = styled.h1`
     font-weight: bolder;
     color: #bd2f28;
     margin-bottom: 20px;
+
+    @media only screen and (min-width: 2560px){
+       font-size: 100px
+    }
 `
 
 const Ul = styled.ul`
@@ -82,6 +90,12 @@ const Li = styled.li`
     border-radius: 5px;
     margin: 5px;
     padding: 10px;
+
+    @media only screen and (max-width: 2560px){
+        width: 325px;
+        height: 335px;
+        border-radius: 20px;
+    }
     
 `
 
@@ -92,6 +106,10 @@ const Img = styled.img`
 
 const H2 = styled.h2`
     font-weight: bolder;
+
+    @media only screen and (max-width: 2560px){
+        font-size: 40px;
+    }
 `
 
 
