@@ -28,6 +28,8 @@ Comandos Necessários para rodar o APP:
 npm install
 ```
 
+https://pokedex-olive-nu.vercel.app/
+
 
 
 
