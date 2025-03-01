@@ -12,6 +12,12 @@ async function getPokemon(id) {
     return response.json()
 }
 
+async function getAbilityDescription(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.effect_entries.find(entry => entry.language.name === 'en').effect;
+}
+
 const PokemonDetails = () => {
 
     const { theme } = useContext(ThemeContext);
@@ -22,6 +28,7 @@ const PokemonDetails = () => {
         name: '',
         moves: [],
         abilities: [],
+        descAbilities: [],
         type: [],
         image: null,
         gif: null,
@@ -32,17 +39,23 @@ const PokemonDetails = () => {
         async function fetchData() {
             const pokemon = await getPokemon(id)
 
+            const abilitiesDesc = await Promise.all(
+                pokemon.abilities.map(async (e) => {
+                    const description = await getAbilityDescription(e.ability.url);
+                    return { name: e.ability.name, description };
+                })
+            );
+
             setPokemon({
                 id: pokemon.id,
                 name: pokemon.name,
                 moves: pokemon.moves.map(e => e.move.name),
                 abilities: pokemon.abilities.map(ability => ability.ability.name) || [],
+                descAbilities: abilitiesDesc.map(ability => ability.description) || [],
                 type: pokemon.types.map(type => type.type.name) || [],
                 image: pokemon.sprites.other['official-artwork'].front_default || "",
                 gif: pokemon.sprites.other['showdown'].front_default || "",
             })
-
-
         }
         fetchData()
     }, [id]);
@@ -66,9 +79,9 @@ const PokemonDetails = () => {
                                 <P><B>Type:</B> {Pokemon.type.join(',').toUpperCase()}</P>
                             </DivName>
                             <P><B>Abilities:</B></P>
-                            <Ul>
-                                {Pokemon.abilities.map((abilities, index) => ( <li key={index}>{abilities}</li> ))}
-                            </Ul>
+                            <UlAbilities>
+                                {Pokemon.abilities.map((abilities, index) => ( <li key={index}><B>{abilities}</B>: {Pokemon.descAbilities[index]}</li> ))}
+                            </UlAbilities>
                             <P><B>Moves: </B></P>
                             <Ul>
                                 {Pokemon.moves.map((move, index) => ( <li key={index}>{move}</li> ))}
@@ -84,7 +97,7 @@ const PokemonDetails = () => {
 };
 
 const Div = styled.div`    
-    height: 100dvh;
+    height: 100%;
     padding: 10px;
     background-color: #142433 ;
     font-family: Poppins, sans-serif;
@@ -115,6 +128,9 @@ const Ul = styled.ul`
     font-size: 15px;
     justify-content: center;
     width:90%; 
+`
+const UlAbilities = styled(Ul)`
+    list-style: none;
 `
 
 const Li = styled.li`
